@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
+    private array $loans = [
+        ['id' => 1, 'nama_anggota' => 'Ahmad Tsani', 'judul_buku' => 'Laskar Pelangi', 'tanggal_pinjam' => '2026-09-01', 'tanggal_kembali' => null, 'status' => 'dipinjam'],
+        ['id' => 2, 'nama_anggota' => 'Budi Santoso', 'judul_buku' => 'Clean Code', 'tanggal_pinjam' => '2026-08-15', 'tanggal_kembali' => '2026-08-22', 'status' => 'dikembalikan'],
+    ];
+
     public function index()
     {
-        return 'LoanController@index';
+        $loans = $this->loans;
+
+        return view('loans.index', compact('loans'));
     }
 
     public function create()
