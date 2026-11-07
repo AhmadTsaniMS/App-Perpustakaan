@@ -1,0 +1,290 @@
+{
+  "info": {
+    "_postman_id": "c1f7a456-9e5b-4378-b118-20261107perp",
+    "name": "App Perpustakaan - REST API Collection",
+    "description": "Koleksi Postman untuk pengujian RESTful API Sistem Manajemen Perpustakaan (Workshop Pemrograman Framework - PENS).\nBase URL default: http://127.0.0.1:8011/api atau http://127.0.0.1:8000/api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8011/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Stats",
+      "item": [
+        {
+          "name": "GET Ringkasan Statistik (Stats)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/stats",
+              "host": ["{{base_url}}"],
+              "path": ["stats"]
+            },
+            "description": "Mengambil jumlah total buku, total anggota, dan total peminjaman aktif."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "GET Semua Buku (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/books?page=1",
+              "host": ["{{base_url}}"],
+              "path": ["books"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "judul",
+                  "value": "Clean",
+                  "disabled": true
+                },
+                {
+                  "key": "category_id",
+                  "value": "1",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Detail Buku by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/books/1",
+              "host": ["{{base_url}}"],
+              "path": ["books", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Tambah Buku Baru",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"judul\": \"Refactoring: Improving the Design of Existing Code\",\n    \"penulis\": \"Martin Fowler\",\n    \"penerbit\": \"Addison-Wesley\",\n    \"tahun_terbit\": 2019,\n    \"isbn\": \"978-0134757599\",\n    \"stok\": 5,\n    \"category_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/books",
+              "host": ["{{base_url}}"],
+              "path": ["books"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Update Data Buku",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"judul\": \"Clean Code: Revisi Edisi Terbaru\",\n    \"penulis\": \"Robert C. Martin\",\n    \"penerbit\": \"Prentice Hall\",\n    \"tahun_terbit\": 2020,\n    \"isbn\": \"978-0132350884\",\n    \"stok\": 10,\n    \"category_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/books/1",
+              "host": ["{{base_url}}"],
+              "path": ["books", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Hapus Buku",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/books/5",
+              "host": ["{{base_url}}"],
+              "path": ["books", "5"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Members",
+      "item": [
+        {
+          "name": "GET Semua Anggota (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/members",
+              "host": ["{{base_url}}"],
+              "path": ["members"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Detail Anggota by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/members/1",
+              "host": ["{{base_url}}"],
+              "path": ["members", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Loans",
+      "item": [
+        {
+          "name": "GET Semua Peminjaman (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/loans",
+              "host": ["{{base_url}}"],
+              "path": ["loans"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Buat Transaksi Peminjaman Baru",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"member_id\": 1,\n    \"user_id\": 1,\n    \"tanggal_pinjam\": \"2026-11-07\",\n    \"tanggal_kembali\": \"2026-11-14\",\n    \"book_ids\": [1, 2]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/loans",
+              "host": ["{{base_url}}"],
+              "path": ["loans"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Proses Pengembalian Buku by Loan ID",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/loans/1/kembalikan",
+              "host": ["{{base_url}}"],
+              "path": ["loans", "1", "kembalikan"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
